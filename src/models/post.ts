@@ -6,4 +6,5 @@ export interface Post {
     description: string,
     image:string,
     imageLabel: string,
+    postUrl?:string,
 }

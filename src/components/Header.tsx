@@ -3,6 +3,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
+import { GitHub } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
 
 interface HeaderProps {
@@ -25,6 +26,9 @@ export default function Header(props: HeaderProps) {
         >
           {title}
         </Typography>
+        <Button color='primary' href='https://github.com/sedlakp' variant='outlined' target="_blank">
+          <GitHub></GitHub>
+        </Button>
       </Toolbar>
       <Toolbar
         component="nav"

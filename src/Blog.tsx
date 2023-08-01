@@ -1,4 +1,3 @@
-import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -8,6 +7,7 @@ import FeaturedPost from "./components/FeaturedPost";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { Post } from "./models/post";
+import { useEffect, useState } from "react";
 
 const featuredPosts: Post[] = [
   {
@@ -17,28 +17,26 @@ const featuredPosts: Post[] = [
     image: "https://source.unsplash.com/random?wallpapers",
     imageLabel: "Image Text",
   },
-  // {
-  //   title: 'Post title',
-  //   date: 'Nov 11',
-  //   description:
-  //     'This is a wider card with supporting text below as a natural lead-in to additional content.',
-  //   image: 'https://source.unsplash.com/random?wallpapers',
-  //   imageLabel: 'Image Text',
-  // },
 ];
 
 console.log("PUBLIC URL: ", process.env.PUBLIC_URL);
 
-const posts = [
-  "/posts/blog-post.1.md",
-  "/posts/blog-post.2.md",
-  "/posts/blog-post.3.md",
-];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function Blog() {
+
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    fetch('posts.json')
+      .then((r) => r.json())
+      .then((data) => {
+        setPosts(data.map((item: Post) => item.postUrl))
+      })
+  },[])
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />

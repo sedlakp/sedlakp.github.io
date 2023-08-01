@@ -1,14 +1,10 @@
 [
     {
-        "title":"New Post 1",
-        "postUrl": "/posts/blog-post.1.md"
+        "title":"Web and mobile development resources",
+        "postUrl": "/posts/230801-webdev.md"
     },
     {
-        "title":"New Post 2",
-        "postUrl": "/posts/blog-post.1.md"
-    },
-    {
-        "title":"New Post 3",
-        "postUrl": "/posts/blog-post.1.md"
+        "title":"Hello",
+        "postUrl": "/posts/230801-hello.md"
     }
 ]
