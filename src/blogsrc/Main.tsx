@@ -6,15 +6,16 @@ import MarkdownContent from './MarkdownContent';
 
 interface MainProps {
   posts: ReadonlyArray<string>;
-  title: string;
 }
 
 export default function Main(props: MainProps) {
-  const { posts, title } = props;
+  const { posts} = props;
 
   return (
     <Grid
+      container
       item
+      spacing={6}
       xs={12}
       md={8}
       sx={{
@@ -23,14 +24,12 @@ export default function Main(props: MainProps) {
         },
       }}
     >
-      <Typography variant="h6" gutterBottom>
-        {title}
-      </Typography>
-      <Divider />
       {posts.map((post) => (
-        <MarkdownContent className="markdown" key={post.substring(0, 40)}>
-          {post}
-        </MarkdownContent>
+        <Grid item>
+          <MarkdownContent className="markdown" key={post.substring(0, 40)}>
+            {post}
+          </MarkdownContent>
+        </Grid>
       ))}
     </Grid>
   );

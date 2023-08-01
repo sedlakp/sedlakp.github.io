@@ -1,6 +1,6 @@
 # Sample blog post
 
-_April 1, 2020 by [Olivier](/)_
+_April 1, 2020_
 
 This blog post shows a few different types of content that are supported and styled with
 Material styles. Basic typography, images, and code are all supported.
