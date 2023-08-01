@@ -1,7 +1,5 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import MarkdownContent from './MarkdownContent';
 
 interface MainProps {
@@ -25,8 +23,8 @@ export default function Main(props: MainProps) {
       }}
     >
       {posts.map((post) => (
-        <Grid item>
-          <MarkdownContent className="markdown" key={post.substring(0, 40)}>
+        <Grid item key={post.substring(0, 40)}>
+          <MarkdownContent className="markdown">
             {post}
           </MarkdownContent>
         </Grid>
