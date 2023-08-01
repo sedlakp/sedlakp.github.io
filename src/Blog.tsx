@@ -1,25 +1,21 @@
-import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import * as React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Header from "./components/Header";
-import FeaturedPost from './components/FeaturedPost';
-import Main from './components/Main';
-import Footer from './components/Footer';
-import post1 from "./posts/blog-post.1.md";
-import post2 from './posts/blog-post.2.md';
-import post3 from './posts/blog-post.3.md';
-import { Post } from './models/post';
+import FeaturedPost from "./components/FeaturedPost";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
+import { Post } from "./models/post";
 
 const featuredPosts: Post[] = [
   {
-    title: 'iOS App - COMING SOON',
-    date: '2023/8/1',
-    description:
-      "An iOS app to read this website's content more comfortably!",
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
+    title: "iOS App - COMING SOON",
+    date: "2023/8/1",
+    description: "An iOS app to read this website's content more comfortably!",
+    image: "https://source.unsplash.com/random?wallpapers",
+    imageLabel: "Image Text",
   },
   // {
   //   title: 'Post title',
@@ -31,7 +27,13 @@ const featuredPosts: Post[] = [
   // },
 ];
 
-const posts = [post1, post2, post3];
+console.log("PUBLIC URL: ", process.env.PUBLIC_URL);
+
+const posts = [
+  "/posts/blog-post.1.md",
+  "/posts/blog-post.2.md",
+  "/posts/blog-post.3.md",
+];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
