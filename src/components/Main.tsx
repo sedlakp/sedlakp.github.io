@@ -21,6 +21,7 @@ export default function Main(props: MainProps) {
           py: 3,
         },
       }}
+      pb={6}
     >
       {posts.map((post) => (
         <Grid item key={post.substring(0, 40)}>

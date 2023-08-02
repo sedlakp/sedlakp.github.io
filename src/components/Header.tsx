@@ -5,7 +5,6 @@ import { DarkMode, GitHub, LightMode } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
 import { useContext } from 'react';
 import { AppTheme, ThemeContext } from './AppContexts';
-import { darkTheme, lightTheme } from './Themes';
 
 
 interface HeaderProps {
@@ -29,15 +28,15 @@ export default function Header(props: HeaderProps) {
           variant="h5"
           color="inherit"
           align="left"
-          noWrap
+          // noWrap
           sx={{ flex: 1 }}
         >
           {title}
         </Typography>
-        <Button color='primary' href='https://github.com/sedlakp' variant='outlined' target="_blank">
+        <Button color='inherit' href='https://github.com/sedlakp' variant='outlined' target="_blank">
           <GitHub></GitHub>
         </Button>
-        <Button color='primary' variant='outlined' onClick={themeButtonClicked}>
+        <Button color='inherit' variant='outlined' onClick={themeButtonClicked}>
           {theme === AppTheme.Dark ? <DarkMode/> : <LightMode/>}
         </Button>
       </Toolbar>

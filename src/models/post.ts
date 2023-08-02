@@ -4,7 +4,7 @@ export interface Post {
     title: string,
     date: string,
     description: string,
-    image:string,
+    // image:string,
     imageLabel: string,
     postUrl?:string,
 }

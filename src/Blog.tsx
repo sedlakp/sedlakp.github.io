@@ -15,10 +15,10 @@ const LOCAL_STORAGE_THEME_KEY = "blog-theme"
 
 const featuredPosts: Post[] = [
   {
-    title: "iOS App - COMING SOON",
+    title: "iOS App - Work in progress",
     date: "2023/8/1",
-    description: "An iOS app to read this website's content more comfortably!",
-    image: "https://source.unsplash.com/random?wallpapers",
+    description: "I want to make a simple SwiftUI app that shows posts from this site",
+    // image: "https://source.unsplash.com/random?wallpapers",
     imageLabel: "Image Text",
   },
 ];
