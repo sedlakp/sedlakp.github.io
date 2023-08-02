@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import { DarkMode, GitHub, LightMode } from '@mui/icons-material';
 import Typography from '@mui/material/Typography';
 import { useContext } from 'react';
-import { ThemeContext } from './AppContexts';
+import { AppTheme, ThemeContext } from './AppContexts';
 import { darkTheme, lightTheme } from './Themes';
 
 
@@ -18,7 +18,7 @@ export default function Header(props: HeaderProps) {
   const {theme, setTheme} = useContext(ThemeContext)
 
   function themeButtonClicked() {
-    setTheme(theme === lightTheme ? darkTheme : lightTheme)
+    setTheme(theme === AppTheme.Light ? AppTheme.Dark : AppTheme.Light)
   }
 
   return (
@@ -38,7 +38,7 @@ export default function Header(props: HeaderProps) {
           <GitHub></GitHub>
         </Button>
         <Button color='primary' variant='outlined' onClick={themeButtonClicked}>
-          {theme === darkTheme ? <DarkMode/> : <LightMode/>}
+          {theme === AppTheme.Dark ? <DarkMode/> : <LightMode/>}
         </Button>
       </Toolbar>
       <Toolbar

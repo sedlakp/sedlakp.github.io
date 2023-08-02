@@ -8,8 +8,10 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { Post } from "./models/post";
 import { useEffect, useState} from "react";
-import { lightTheme } from "./components/Themes";
-import { ThemeContext } from "./components/AppContexts";
+import { darkTheme, lightTheme } from "./components/Themes";
+import { AppTheme, ThemeContext } from "./components/AppContexts";
+
+const LOCAL_STORAGE_THEME_KEY = "blog-theme"
 
 const featuredPosts: Post[] = [
   {
@@ -24,9 +26,19 @@ const featuredPosts: Post[] = [
 console.log("PUBLIC URL: ", process.env.PUBLIC_URL);
 
 export default function Blog() {
+  
+  function getTheme(): AppTheme {
+    const savedTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) ?? AppTheme.Light
+    return savedTheme === AppTheme.Light ? AppTheme.Light : AppTheme.Dark
+  }
 
   const [posts, setPosts] = useState([])
-  const [theme, setTheme] = useState(lightTheme)
+  const [theme, setTheme] = useState(getTheme())
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme)
+  }, [theme])
+
 
   useEffect(() => {
     fetch('posts.json')
@@ -38,7 +50,7 @@ export default function Blog() {
 
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme === AppTheme.Light ? lightTheme : darkTheme}>
         <CssBaseline />
         <Container maxWidth="lg">
           <Header title="ピーターのゴミ置き場" />
