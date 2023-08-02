@@ -1,13 +1,15 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import Header from "./components/Header";
 import FeaturedPost from "./components/FeaturedPost";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { Post } from "./models/post";
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
+import { lightTheme } from "./components/Themes";
+import { ThemeContext } from "./components/AppContexts";
 
 const featuredPosts: Post[] = [
   {
@@ -21,13 +23,10 @@ const featuredPosts: Post[] = [
 
 console.log("PUBLIC URL: ", process.env.PUBLIC_URL);
 
-
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
 export default function Blog() {
 
   const [posts, setPosts] = useState([])
+  const [theme, setTheme] = useState(lightTheme)
 
   useEffect(() => {
     fetch('posts.json')
@@ -38,25 +37,27 @@ export default function Blog() {
   },[])
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />
-      <Container maxWidth="lg">
-        <Header title="ピーターのゴミ置き場" />
-        <main>
-          <Grid container spacing={4} justifyContent={"center"}>
-            {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
-            ))}
-          </Grid>
-          <Grid container justifyContent="center" spacing={5} sx={{ mt: 3 }}>
-            <Main posts={posts} />
-          </Grid>
-        </main>
-      </Container>
-      <Footer
-        title="No more stuff here! You've seen all of it!"
-        description=""
-      />
-    </ThemeProvider>
+    <ThemeContext.Provider value={{theme, setTheme}}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Container maxWidth="lg">
+          <Header title="ピーターのゴミ置き場" />
+          <main>
+            <Grid container spacing={4} justifyContent={"center"}>
+              {featuredPosts.map((post) => (
+                <FeaturedPost key={post.title} post={post} />
+              ))}
+            </Grid>
+            <Grid container justifyContent="center" spacing={5} sx={{ mt: 3 }}>
+              <Main posts={posts} />
+            </Grid>
+          </main>
+        </Container>
+        <Footer
+          title="No more stuff here! You've seen all of it!"
+          description=""
+        />
+      </ThemeProvider>
+    </ThemeContext.Provider>
   );
 }
