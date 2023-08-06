@@ -8,9 +8,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      {/* <Link color="inherit" href=""> */}
        {'Petr Sedlak, '}
-      {/* </Link>{' '} */}
       {new Date().getFullYear()}
       {'.'}
     </Typography>

@@ -3,27 +3,14 @@ import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/material/styles";
 import Header from "./components/Header";
-import FeaturedPost from "./components/FeaturedPost";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { Post } from "./models/post";
 import { useEffect, useState} from "react";
 import { darkTheme, lightTheme } from "./components/Themes";
 import { AppTheme, ThemeContext } from "./components/AppContexts";
+import { Typography } from "@mui/material";
 
 const LOCAL_STORAGE_THEME_KEY = "blog-theme"
-
-const featuredPosts: Post[] = [
-  {
-    title: "iOS App - Work in progress",
-    date: "2023/8/1",
-    description: "I want to make a simple SwiftUI app that shows posts from this site",
-    // image: "https://source.unsplash.com/random?wallpapers",
-    imageLabel: "Image Text",
-  },
-];
-
-console.log("PUBLIC URL: ", process.env.PUBLIC_URL);
 
 export default function Blog() {
   
@@ -44,7 +31,7 @@ export default function Blog() {
     fetch('posts.json')
       .then((r) => r.json())
       .then((data) => {
-        setPosts(data.map((item: Post) => item.postUrl))
+        setPosts(data)
       })
   },[])
 
@@ -52,15 +39,13 @@ export default function Blog() {
     <ThemeContext.Provider value={{theme, setTheme}}>
       <ThemeProvider theme={theme === AppTheme.Light ? lightTheme : darkTheme}>
         <CssBaseline />
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" >
           <Header title="ピーターのゴミ置き場" />
           <main>
-            <Grid container spacing={4} justifyContent={"center"}>
-              {featuredPosts.map((post) => (
-                <FeaturedPost key={post.title} post={post} />
-              ))}
-            </Grid>
-            <Grid container justifyContent="center" spacing={5} sx={{ mt: 3 }}>
+            <Typography fontWeight={'bold'} align="center">
+            POSTS
+            </Typography>
+            <Grid container spacing={0} sx={{ mt: 3, mb: 3 }}>
               <Main posts={posts} />
             </Grid>
           </main>
