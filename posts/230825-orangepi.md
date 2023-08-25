@@ -42,7 +42,7 @@ This article describes how I did it without using a keyboard (or a mouse) connec
 9. Look at devices on local network again and find the IP of the device that wasn't in the list before -> `arp -a`
 10. Connect to the orange pi -> ssh -l orangepi some.ip.address
 11. When prompted for a password, input `orangepi` as the password
-12. I also want to install Ubuntu on the eMMC Flash Memory so I don't lose any progress or saved data when I turn off the power. This also allows me to use the sd card slot as a storage.
+12. I also want to install Ubuntu onto the eMMC Flash Memory.
     - TODO
 13. Now I still have 2 cables coming from the Orange PI, one that allows Orange PI to eat electricity and one for internet. I want to get rid of the internet cable so let's connect to wifi
     - TODO
