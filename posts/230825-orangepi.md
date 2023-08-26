@@ -9,7 +9,7 @@ This article describes how I did it without using a keyboard (or a mouse) connec
 ## Things I needed
 
 - Orange PI LTS 3
-- Downloaded Ubuntu server image (.img extension)
+- Downloaded Ubuntu server image (.img extension) or Armbian
 - Laptop (My laptop's OS is macOS)
 - Router
 - Ethernet cable
@@ -40,10 +40,11 @@ This article describes how I did it without using a keyboard (or a mouse) connec
 7. Now go back to Terminal and look at devices on local network -> `arp -a`
 8. Connect Orange PI to the router with the ethernet cable
 9. Look at devices on local network again and find the IP of the device that wasn't in the list before -> `arp -a`
-10. Connect to the orange pi -> ssh -l orangepi some.ip.address
-11. When prompted for a password, input `orangepi` as the password
+10. Connect to the orange pi -> `ssh -l orangepi some.ip.address` or `ssh -l root some.ip.address` in case of Armbian
+11. When prompted for a password, input `orangepi` (in case you're using the image from the official Orange PI website) or `1234` (in case of Armbian) as the password 
 12. I also want to install Ubuntu onto the eMMC Flash Memory.
-    - TODO
+    - after connecting to the orange pi, run `nand-sata-install` [script](https://github.com/speters/armbian-build-lib/blob/master/scripts/nand-sata-install/usr/lib/nand-sata-install/nand-sata-install.sh) (you might need `sudo` in front of that command) and in the gui that appears select boot from eMMC and EXT4
+    - After a couple minutes the Orange PI powers down and you can remove the sd card
 13. Now I still have 2 cables coming from the Orange PI, one that allows Orange PI to eat electricity and one for internet. I want to get rid of the internet cable so let's connect to wifi
     - TODO
 
@@ -55,3 +56,5 @@ http://www.microdev.it/wp/en/2016/06/17/sd-card-setup-for-orange-pi-pc-openelec-
 https://jumptuck.com/blog/2023-02-13-install-linux-orange-pi-3-lts-emmc/
 
 http://www.goattack.com/2016/01/04/the-hackers-way-to-set-up-a-orangepi-without-keyboard-or-monitor-aka-easy-headless-install/
+
+https://docs.armbian.com/User-Guide_Getting-Started/#how-to-prepare-a-sd-card
