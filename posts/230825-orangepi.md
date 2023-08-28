@@ -1,4 +1,4 @@
-# OrangePI - Headless Ubuntu server setup
+# OrangePI - Headless Ubuntu/Armbian server setup
 
 _2023/8/25_
 
